@@ -1,0 +1,15 @@
+@mixin vp768 {
+	@media (max-width: 768px) {
+		@content;
+	}
+}
+
+@mixin vp1000 {
+	@media (max-width: 1000px) {
+		@content;
+	}
+}
+
+@mixin trans($props...) {
+	transition: $props 0.3s ease;
+}

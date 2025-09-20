@@ -1,0 +1,264 @@
+---
+const params = ['Все', 'Ульяновск', 'Димитровград', 'Октябрьский'];
+let activeParam = params[0];
+
+const dealerships = [
+	{
+		name: 'АРМАДА-АВТО Урицкого',
+		city: 'Ульяновск',
+		address: 'ул. Урицкого, 39',
+		phone: '+7 (8422) 42-55-37',
+		worktime: 'ежедневно: 08.00 - 21.00',
+		img: '/images/dlr_item1.png',
+	},
+	{
+		name: 'АРМАДА-АВТО Ленинский',
+		city: 'Ульяновск',
+		address: 'ул. Ленина, 10',
+		phone: '+7 (8422) 43-11-22',
+		worktime: 'ежедневно: 08.00 - 21.00',
+		img: '/images/dlr_item2.png',
+	},
+	{
+		name: 'АРМАДА-АВТО Димитровград',
+		city: 'Димитровград',
+		address: 'пр. Победы, 5',
+		phone: '+7 (84235) 5-55-55',
+		worktime: 'ежедневно: 08.00 - 20.00',
+		img: '/images/dlr_item1.png',
+	},
+	{
+		name: 'АРМАДА-АВТО Октябрьский',
+		city: 'Октябрьский',
+		address: 'ул. Советская, 12',
+		phone: '+7 (8422) 77-77-77',
+		worktime: 'ежедневно: 09.00 - 20.00',
+		img: '/images/dlr_item2.png',
+	},
+];
+---
+
+
+<section class="dealership container">
+	<h2 class="h2">Найти автосалон</h2>
+	<div class="params no-scrollbar">
+		{params.map((param, index) => (
+			<button type="button" class={param === activeParam ? 'active' : ''}>
+				{index !== 0 && (
+					<svg width="14" height="16">
+						<use href="#geo"></use>
+					</svg>
+				)}
+				{param}
+			</button>
+		))}
+	</div>
+
+	<div class="dealership-swiper swiper">
+		<div class="swiper-wrapper">
+			{dealerships.map(d => (
+				<div class="dealership-card swiper-slide">
+					<div class="img">
+						<img src={d.img} alt="" loading="lazy">
+					</div>
+					<div class="info">
+						<h3>{d.name}</h3>
+						<p class="address">
+							<svg width="14" height="16">
+								<use href="#geo"></use>
+							</svg>
+							{d.address}</p>
+						<p class="phone">{d.phone}</p>
+						<p class="worktime">{d.worktime}</p>
+						<a href="/" class="button red">Подробнее</a>
+					</div>
+				</div>
+			))}
+		</div>
+		<button class="nav-el dlrPrev"><img src="/images/arrow-right-swiper.svg" alt=""></button>
+		<button class="nav-el dlrNext"><img src="/images/arrow-right-swiper.svg" alt=""></button>
+
+	</div>
+</section>
+
+<style lang="scss" is:global>
+  @use "../styles/mixins" as m;
+
+  .dealership {
+    position: relative;
+    padding-left: 0;
+    padding-right: 0;
+
+    .nav-el {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 5;
+      box-shadow: 0 0 40px 0 rgba(20, 10, 50, 0.2);
+
+      @media (max-width: 1200px) {
+       top: 30%;
+      }
+
+      @include m.vp768 {
+        display: none;
+      }
+
+      &.dlrPrev {
+        left: 40px;
+        transform: translateY(-50%) rotate(180deg);
+      }
+
+      &.dlrNext {
+        right: 20px;
+        @media (max-width: 1200px) {
+        right: 40px;
+        }
+      }
+    }
+
+    .dealership-swiper {
+
+      .swiper-wrapper {
+        padding: 10px 0;
+      }
+
+      .dealership-card {
+        border-radius: 40px;
+        box-shadow: 0 0 10px 0 rgba(20, 10, 50, 0.08);
+        background: #fff;
+        padding: 20px;
+        display: flex;
+        gap: 40px;
+
+        @media (max-width: 1200px) {
+          flex-direction: column;
+        }
+
+        @include m.vp768 {
+          gap: 10px;
+        }
+
+        .img {
+          border-radius: 40px 0 40px 40px;
+          width: 249px;
+          height: 100%;
+          position: relative;
+          overflow: hidden;
+          max-height: 300px;
+          aspect-ratio: 249 / 294;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+
+          @media (max-width: 1200px) {
+            border-radius: 30px 30px 0 30px;
+            width: 100%;
+          }
+        }
+
+        .info {
+          display: flex;
+          flex-direction: column;
+
+          @media (max-width: 1200px) {
+           text-align: center;
+			align-items: center;
+          }
+
+          h3 {
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 139%;
+            color: #1a1a18;
+            margin-bottom: 14px;
+
+
+            @include m.vp768 {
+              font-size: 15px;
+              line-height: 167%;
+            }
+          }
+
+          .address {
+            border-radius: 40px;
+            background-color: #e8e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 12px 20px;
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 107%;
+            color: #1a1a18;
+            margin-bottom: 25px;
+			width: fit-content;
+          }
+
+          .phone {
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 139%;
+            color: #1a1a18;
+          }
+
+          .worktime {
+            font-weight: 500;
+            font-size: 15px;
+            line-height: 167%;
+            color: #778092;
+            margin-bottom: 20px;
+          }
+
+          .button {
+            min-width: 180px;
+            color: #fff;
+          }
+        }
+      }
+    }
+
+    .params {
+      padding: 0 15px;
+      font-weight: 600;
+      font-size: 13px;
+      line-height: 92%;
+      display: flex;
+      gap: 13px;
+      margin-bottom: 40px;
+      overflow: auto;
+
+      button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        padding: 12px 30px;
+        border-radius: 40px;
+        background-color: #fff;
+        color: #1a1a18;
+        border: none;
+        cursor: pointer;
+        transition: 0.2s;
+
+        &.active {
+          background-color: #e7440b;
+          color: #fff;
+          box-shadow: 0 0 40px 0 rgba(20, 10, 50, 0.08);
+        }
+      }
+    }
+
+    h2 {
+      padding: 0 15px;
+    }
+  }
+</style>
+
+<script src="../scripts/dealershipsSwiper.js"></script>
+
+

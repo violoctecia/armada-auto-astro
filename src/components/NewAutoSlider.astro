@@ -1,0 +1,124 @@
+---
+const items = [
+	{
+		title: 'Новый GEELY ATLAS 2024 <br> от 3 300 000 ₽',
+		img: '/images/new_auto_item1.png',
+	},
+	{
+		title: 'Новый GEELY 2025 <br> от 5 100 000 ₽',
+		img: '/images/new_auto_item2.png',
+	},
+];
+---
+
+<section class="new-auto container">
+
+		<h2 class="h2">Новые автомобили в Ульяновске</h2>
+		<div class="fade-swiper swiper">
+			<div class="swiper-wrapper">
+				{items.map((item) => (
+					<div class="swiper-slide">
+						<p set:html={item.title}></p>
+						<a class="button" href="/">Подробнее</a>
+						<img src={item.img} alt="">
+					</div>
+				))}
+			</div>
+			<div class="nav">
+				<button class="nav-el swiper-prev"><img src="/images/arrow-right-swiper.svg" alt=""></button>
+				<button class="nav-el swiper-next"><img src="/images/arrow-right-swiper.svg" alt=""></button>
+			</div>
+		</div>
+
+</section>
+
+<style lang="scss" is:global>
+  @use "../styles/mixins" as m;
+
+  .new-auto {
+    .swiper {
+      display: flex;
+      width: 100%;
+      background-color: #1a1a18;
+      border-radius: 40px;
+      overflow: hidden;
+      position: relative;
+      color: #fff;
+
+	  p {
+        line-height: 133%;
+        font-size: 30px;
+        font-weight: 600;
+        @include m.vp768 {
+          font-size: 18px;
+        }
+	  }
+
+
+
+      .swiper-slide {
+        padding: 115px 75px;
+        position: relative;
+
+        @include m.vp1000 {
+          padding: 115px 45px;
+        }
+
+        @include m.vp768 {
+          padding: 45px 25px;
+        }
+
+        img {
+
+          position: absolute;
+          left: 0;
+          top: 0;
+          z-index: -1;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        &::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(90deg, #1a1a18 14.5%, rgba(26, 26, 24, 0) 100%);
+          z-index: 1;
+        }
+
+        > * {
+          position: relative;
+          z-index: 2;
+        }
+
+        a {
+          backdrop-filter: blur(5px);
+          background: rgba(255, 255, 255, 0.2);
+          min-width: 182px;
+          margin-top: 22px;
+
+          @include m.vp768 {
+            margin-top: 10px;
+          }
+        }
+      }
+
+      .nav {
+        position: absolute;
+        right: 30px;
+        bottom: 30px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        z-index: 1;
+
+        @include m.vp768 {
+          display: none;
+        }
+      }
+    }
+  }
+</style>
+
+<script src="../scripts/fadeSwiper.js"></script>

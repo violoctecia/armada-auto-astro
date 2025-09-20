@@ -1,0 +1,122 @@
+---
+const cars = [
+	{ name: 'BAIC', price: 'от 1 980 000 ₽' },
+	{ name: 'Jaecoo', price: 'от 3 339 900 ₽' },
+	{ name: 'Haval', price: 'от 1 990 900 ₽' },
+	{ name: 'Geely', price: 'от 2 250 900 ₽' },
+	{ name: 'Chery', price: 'от 1 850 000 ₽' },
+	{ name: 'Lifan', price: 'от 1 720 000 ₽' },
+	{ name: 'Toyota', price: 'от 2 850 000 ₽' },
+	{ name: 'Kia', price: 'от 2 150 000 ₽' },
+	{ name: 'Hyundai', price: 'от 2 180 000 ₽' },
+	{ name: 'Mazda', price: 'от 2 650 000 ₽' },
+	{ name: 'Mitsubishi', price: 'от 2 490 000 ₽' },
+	{ name: 'Nissan', price: 'от 2 300 000 ₽' },
+	{ name: 'Honda', price: 'от 2 350 000 ₽' },
+	{ name: 'Ford', price: 'от 2 200 000 ₽' },
+	{ name: 'Volkswagen', price: 'от 2 700 000 ₽' },
+	{ name: 'Skoda', price: 'от 2 150 000 ₽' },
+	{ name: 'Chevrolet', price: 'от 2 000 000 ₽' },
+	{ name: 'Renault', price: 'от 1 990 000 ₽' },
+	{ name: 'Suzuki', price: 'от 1 950 000 ₽' },
+	{ name: 'Changan', price: 'от 1 880 000 ₽' },
+	{ name: 'FAW', price: 'от 1 930 000 ₽' },
+	{ name: 'Dongfeng', price: 'от 1 970 000 ₽' },
+	{ name: 'Baojun', price: 'от 1 910 000 ₽' },
+	{ name: 'MG', price: 'от 2 120 000 ₽' },
+	{ name: 'Peugeot', price: 'от 2 300 000 ₽' },
+	{ name: 'Citroen', price: 'от 2 150 000 ₽' },
+	{ name: 'GAC', price: 'от 2 050 000 ₽' },
+	{ name: 'Luxgen', price: 'от 2 400 000 ₽' },
+];
+---
+
+<section class="in-stock container">
+	<div class="head h2">
+		<h2>Автомобили в наличии</h2>
+		<div class="nav">
+			<button class="nav-el prev"><img src="/images/arrow-right-swiper.svg" alt=""></button>
+			<button class="nav-el next"><img src="/images/arrow-right-swiper.svg" alt=""></button>
+		</div>
+	</div>
+	<div class="swiper inStockSwiper">
+		<div class="swiper-wrapper">
+			{cars.map((item) => (
+				<a href="/" class="swiper-slide">
+					<p>{item.name} <span>{item.price}</span></p>
+				</a>
+			))}
+		</div>
+	</div>
+</section>
+
+<style lang="scss" is:global>
+  @use "../styles/mixins" as m;
+
+  .in-stock {
+    padding: 80px 0;
+
+	@include m.vp768 {
+	  padding: 50px 0;
+	}
+
+    .head {
+      padding: 0 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 4px;
+
+      h2 {
+		font-size: inherit;
+		font-weight: inherit;
+		color: inherit;
+      }
+
+      .nav {
+        display: flex;
+        gap: 10px;
+      }
+    }
+
+    .swiper-wrapper {
+      padding: 20px 0;
+      @include m.vp1000 {
+       padding: 5px 0;
+      }
+    }
+
+    .swiper-slide {
+      width: fit-content;
+
+      p {
+        border-radius: 40px;
+        background-color: #fff;
+        padding: 25px 30px;
+        box-shadow: 0 0 10px 0 rgba(20, 10, 50, 0.08);
+        display: flex;
+        flex-direction: column;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 156%;
+        color: #1a1a18;
+
+        @include m.vp1000 {
+          padding: 16px;
+		  min-width: 214px;
+		  width: fit-content;
+          border-radius: 30px;
+        }
+
+        span {
+          font-weight: 500;
+          font-size: 15px;
+          line-height: 167%;
+          color: #e7440b;
+        }
+      }
+    }
+  }
+</style>
+
+<script src="../scripts/inStockSwiper.js"></script>

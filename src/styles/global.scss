@@ -1,4 +1,11 @@
 @use 'mixins' as *;
+@use "header";
+@use "hero";
+@use "in-stock";
+@use "dealership";
+@use "new-auto";
+@use "special-offers";
+@use "footer";
 
 $bg: #f7f7f7;
 

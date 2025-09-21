@@ -142,7 +142,8 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	@include trans(background);
+	color: #1a1a18;
+	@include trans(all);
 
 	&:first-child {
 		transform: rotate(180deg);
@@ -150,6 +151,38 @@ body {
 
 	&.swiper-button-disabled {
 		backdrop-filter: blur(5px);
-		background-color: #e8e7eb;
+		background: #e8e7eb;
+	}
+}
+
+.params {
+	padding: 0 15px;
+	font-weight: 600;
+	font-size: 13px;
+	line-height: 92%;
+	display: flex;
+	gap: 13px;
+	margin-bottom: 40px;
+	overflow: auto;
+
+	button {
+		white-space: nowrap;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 6px;
+		padding: 12px 30px;
+		border-radius: 40px;
+		background-color: #fff;
+		color: #1a1a18;
+		border: none;
+		cursor: pointer;
+		transition: 0.2s;
+
+		&.active {
+			background-color: #e7440b;
+			color: #fff;
+			box-shadow: 0 0 40px 0 rgba(20, 10, 50, 0.08);
+		}
 	}
 }

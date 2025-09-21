@@ -75,9 +75,16 @@ const dealerships = [
 				</div>
 			))}
 		</div>
-		<button class="nav-el dlrPrev"><img src="/images/arrow-right-swiper.svg" alt=""></button>
-		<button class="nav-el dlrNext"><img src="/images/arrow-right-swiper.svg" alt=""></button>
-
+		<button class="nav-el dlrPrev">
+			<svg width="8" height="12">
+				<use href="#right-arrow"></use>
+			</svg>
+		</button>
+		<button class="nav-el dlrNext">
+			<svg width="8" height="12">
+				<use href="#right-arrow"></use>
+			</svg>
+		</button>
 	</div>
 </section>
 
@@ -97,7 +104,7 @@ const dealerships = [
       box-shadow: 0 0 40px 0 rgba(20, 10, 50, 0.2);
 
       @media (max-width: 1200px) {
-       top: 30%;
+        top: 30%;
       }
 
       @include m.vp768 {
@@ -110,14 +117,12 @@ const dealerships = [
       }
 
       &.dlrNext {
-        right: 20px;
-        @media (max-width: 1200px) {
         right: 40px;
-        }
       }
     }
 
     .dealership-swiper {
+
 
       .swiper-wrapper {
         padding: 10px 0;
@@ -130,6 +135,7 @@ const dealerships = [
         padding: 20px;
         display: flex;
         gap: 40px;
+        align-items: center;
 
         @media (max-width: 1200px) {
           flex-direction: column;
@@ -165,8 +171,8 @@ const dealerships = [
           flex-direction: column;
 
           @media (max-width: 1200px) {
-           text-align: center;
-			align-items: center;
+            text-align: center;
+            align-items: center;
           }
 
           h3 {
@@ -196,7 +202,7 @@ const dealerships = [
             line-height: 107%;
             color: #1a1a18;
             margin-bottom: 25px;
-			width: fit-content;
+            width: fit-content;
           }
 
           .phone {
@@ -218,37 +224,6 @@ const dealerships = [
             min-width: 180px;
             color: #fff;
           }
-        }
-      }
-    }
-
-    .params {
-      padding: 0 15px;
-      font-weight: 600;
-      font-size: 13px;
-      line-height: 92%;
-      display: flex;
-      gap: 13px;
-      margin-bottom: 40px;
-      overflow: auto;
-
-      button {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 6px;
-        padding: 12px 30px;
-        border-radius: 40px;
-        background-color: #fff;
-        color: #1a1a18;
-        border: none;
-        cursor: pointer;
-        transition: 0.2s;
-
-        &.active {
-          background-color: #e7440b;
-          color: #fff;
-          box-shadow: 0 0 40px 0 rgba(20, 10, 50, 0.08);
         }
       }
     }

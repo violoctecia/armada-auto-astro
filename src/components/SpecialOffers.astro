@@ -1,0 +1,159 @@
+---
+const params = [
+	'Все',
+	'Новые авто',
+	'С пробегом',
+	'Сервис',
+	'Кузовной ремонт',
+];
+
+const items = [
+	{
+		img: '/images/special-offers-item1.png',
+		title: 'Только в июле! TANK 300 с выгодой до 450 000 ₽!',
+	},
+	{
+		img: '/images/special-offers-item2.png',
+		title: 'JAECOO J8 - новый флагманский кроссовер бренда',
+	},
+	{
+		img: '/images/special-offers-item1.png',
+		title: 'Только в июле! TANK 300 с выгодой до 450 000 ₽!',
+	},
+	{
+		img: '/images/special-offers-item2.png',
+		title: 'JAECOO J8 - новый флагманский кроссовер бренда',
+	},
+	{
+		img: '/images/special-offers-item1.png',
+		title: 'Только в июле! TANK 300 с выгодой до 450 000 ₽!',
+	},
+	{
+		img: '/images/special-offers-item2.png',
+		title: 'JAECOO J8 - новый флагманский кроссовер бренда',
+	},
+];
+---
+
+<section class="special-offers container">
+	<h2 class="h2">Акции</h2>
+	<div class="params no-scrollbar">
+		{params.map((param, index) => (
+			<button type="button" class={index === 0 ? 'active' : ''}>
+				{param}
+			</button>
+		))}
+	</div>
+	<div class="special-swiper swiper">
+		<div class="swiper-wrapper">
+			{items.map(i => (
+				<a href="/" class="special-card swiper-slide">
+					<div class="img">
+						<img src={i.img} alt="" loading="lazy">
+					</div>
+					<h3>{i.title}</h3>
+				</a>
+			))}
+		</div>
+		<button class="nav-el specialPrev">
+			<svg width="8" height="12">
+				<use href="#right-arrow"></use>
+			</svg>
+		</button>
+		<button class="nav-el specialNext">
+			<svg width="8" height="12">
+				<use href="#right-arrow"></use>
+			</svg>
+		</button>
+
+	</div>
+</section>
+
+<style lang="scss">
+  @use "../styles/mixins" as m;
+
+  .special-offers {
+    padding: 90px 0 110px 0;
+
+    h2 {
+      padding: 0 15px;
+    }
+
+    .special-swiper {
+      padding: 0 10px;
+
+      .special-card {
+        min-width: 203px;
+        max-width: 350px;
+        @include m.vp768 {
+          max-width: 203px;
+        }
+
+        .img {
+          border-radius: 40px 0 40px 40px;
+          aspect-ratio: 330 / 476;
+          margin-bottom: 14px;
+          overflow: hidden;
+
+
+          @include m.vp768 {
+            border-radius: 30px 0 30px 30px;
+            margin-bottom: 10px;
+          }
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+
+        h3 {
+          font-weight: 600;
+          font-size: 16px;
+          line-height: 137%;
+          color: #000;
+          @include m.vp768 {
+            font-size: 15px;
+            line-height: 133%;
+          }
+
+        }
+      }
+
+      .nav-el {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 5;
+        box-shadow: 0 0 40px 0 rgba(20, 10, 50, 0.2);
+
+        &.swiper-button-disabled {
+          opacity: 0;
+        }
+
+        @media (max-width: 1200px) {
+          top: 40%;
+        }
+
+        @include m.vp768 {
+          display: none;
+        }
+
+        &.specialPrev {
+          left: 20px;
+          transform: translateY(-50%) rotate(180deg);
+        }
+
+        &.specialNext {
+          right: 20px;
+
+        }
+      }
+
+    }
+
+  }
+</style>
+
+<script src="../scripts/specialOffersSwiper.js"></script>

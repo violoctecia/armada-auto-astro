@@ -13,22 +13,30 @@ const items = [
 
 <section class="new-auto container">
 
-		<h2 class="h2">Новые автомобили в Ульяновске</h2>
-		<div class="fade-swiper swiper">
-			<div class="swiper-wrapper">
-				{items.map((item) => (
-					<div class="swiper-slide">
-						<p set:html={item.title}></p>
-						<a class="button" href="/">Подробнее</a>
-						<img src={item.img} alt="">
-					</div>
-				))}
-			</div>
-			<div class="nav">
-				<button class="nav-el swiper-prev"><img src="/images/arrow-right-swiper.svg" alt=""></button>
-				<button class="nav-el swiper-next"><img src="/images/arrow-right-swiper.svg" alt=""></button>
-			</div>
+	<h2 class="h2">Новые автомобили в Ульяновске</h2>
+	<div class="fade-swiper swiper">
+		<div class="swiper-wrapper">
+			{items.map((item) => (
+				<div class="swiper-slide">
+					<p set:html={item.title}></p>
+					<a class="button" href="/">Подробнее</a>
+					<img src={item.img} alt="">
+				</div>
+			))}
 		</div>
+		<div class="nav">
+			<button class="nav-el swiper-prev">
+				<svg width="8" height="12">
+					<use href="#right-arrow"></use>
+				</svg>
+			</button>
+			<button class="nav-el swiper-next">
+				<svg width="8" height="12">
+					<use href="#right-arrow"></use>
+				</svg>
+			</button>
+		</div>
+	</div>
 
 </section>
 
@@ -45,15 +53,14 @@ const items = [
       position: relative;
       color: #fff;
 
-	  p {
+      p {
         line-height: 133%;
         font-size: 30px;
         font-weight: 600;
         @include m.vp768 {
           font-size: 18px;
         }
-	  }
-
+      }
 
 
       .swiper-slide {

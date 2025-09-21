@@ -35,8 +35,16 @@ const cars = [
 	<div class="head h2">
 		<h2>Автомобили в наличии</h2>
 		<div class="nav">
-			<button class="nav-el prev"><img src="/images/arrow-right-swiper.svg" alt=""></button>
-			<button class="nav-el next"><img src="/images/arrow-right-swiper.svg" alt=""></button>
+			<button class="nav-el prev">
+				<svg width="8" height="12">
+					<use href="#right-arrow"></use>
+				</svg>
+			</button>
+			<button class="nav-el next">
+				<svg width="8" height="12">
+					<use href="#right-arrow"></use>
+				</svg>
+			</button>
 		</div>
 	</div>
 	<div class="swiper inStockSwiper">
@@ -56,9 +64,9 @@ const cars = [
   .in-stock {
     padding: 80px 0;
 
-	@include m.vp768 {
-	  padding: 50px 0;
-	}
+    @include m.vp768 {
+      padding: 50px 0;
+    }
 
     .head {
       padding: 0 15px;
@@ -68,9 +76,9 @@ const cars = [
       gap: 4px;
 
       h2 {
-		font-size: inherit;
-		font-weight: inherit;
-		color: inherit;
+        font-size: inherit;
+        font-weight: inherit;
+        color: inherit;
       }
 
       .nav {
@@ -82,7 +90,7 @@ const cars = [
     .swiper-wrapper {
       padding: 20px 0;
       @include m.vp1000 {
-       padding: 5px 0;
+        padding: 5px 0;
       }
     }
 
@@ -103,8 +111,8 @@ const cars = [
 
         @include m.vp1000 {
           padding: 16px;
-		  min-width: 214px;
-		  width: fit-content;
+          min-width: 214px;
+          width: fit-content;
           border-radius: 30px;
         }
 

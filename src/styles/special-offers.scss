@@ -3,6 +3,10 @@
 .special-offers {
   padding: 90px 0 110px 0;
 
+  @include m.vp768 {
+    padding: 40px 0 30px;
+  }
+
   h2 {
     padding: 0 15px;
   }
